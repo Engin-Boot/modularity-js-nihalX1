@@ -11,19 +11,31 @@ function GetColorFromPairNumber(pairNumber) {
 }
 
 function GetPairNumberFromColors(majorColor, minorColor) {
+    let majorIndex = getMajorIndex(majorColor);
+    let minorIndex = getMinorIndex(minorColor);
+
+    return majorIndex * colors.MinorColors.length + minorIndex + 1;
+}
+function getMajorIndex(majorColor){
     let majorIndex = 0;
-    let minorIndex = 0;
+
     for(majorIndex = 0; majorIndex < colors.MajorColors.length; majorIndex++) {
         if(colors.MajorColors[majorIndex] == majorColor) {
             break;
         }
     }
+    return majorIndex;
+}
+
+function getMinorIndex(minorColor){
+    let minorIndex = 0;
+
     for(minorIndex = 0; minorIndex < colors.MinorColors.length; minorIndex++) {
         if(colors.MinorColors[minorIndex] == minorColor) {
             break;
         }
     }
-    return majorIndex * colors.MinorColors.length + minorIndex + 1;
+    return minorIndex;
 }
 
 module.exports = {
